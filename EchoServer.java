@@ -5,7 +5,7 @@
  */
 package EchoServer;
 
-import java.io.*;
+import java.io.*; //import yang berisi kelas-kelas untuk proses input-output
 
 import java.net.*;
 
@@ -20,14 +20,14 @@ public class EchoServer {
 
     public static void main(String[] args) {
             
-        try(ServerSocket echoServer = new ServerSocket(8000)){
-            Socket clientSocket= echoServer.accept();
+        try(ServerSocket echoServer = new ServerSocket(8000)){ // server utama socket (titik awal komunikasi pada program).
+            Socket clientSocket= echoServer.accept(); // untuk membuat socket baru
             
-            BufferedReader bufferReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            PrintWriter outPut = new PrintWriter(clientSocket.getOutputStream(), true);
+            BufferedReader bufferReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())); // untuk membaca sebuah karakter
+            PrintWriter outPut = new PrintWriter(clientSocket.getOutputStream(), true); // print output
             
             String line;
-            while ((line = bufferReader.readLine()) != null) {
+            while ((line = bufferReader.readLine()) != null) {  //apabila sudah ada inputan dari client 
                 System.out.printf("Sent from the client: "+line);
                 outPut.println(line);
          }
