@@ -22,15 +22,15 @@ public class Client {
      */
     public static void main(String args []) throws Exception 
     {
-        Socket sk=new Socket("127.0.0.1",5000);
-        BufferedReader sin = new BufferedReader(new InputStreamReader(sk.getInputStream()));
-        PrintStream sout=new PrintStream(sk.getOutputStream());
+        Socket sk=new Socket("127.0.0.1",5000); //membuat socket baru
+        BufferedReader sin = new BufferedReader(new InputStreamReader(sk.getInputStream())); // BufferedReader untuk membaca sebuah karakter untuk dijadikan program
+        PrintStream sout=new PrintStream(sk.getOutputStream()); 
         BufferedReader stdin=new BufferedReader(new InputStreamReader(System.in));
         String s;
-        while(true)
+        while(true) //apabila sudah ada inputan
         {
              
-                System.out.print("Client : ");
+                System.out.print("Client : "); //program untuk menjalankan client
                 s=stdin.readLine();
                 sout.println(s);
                 
@@ -40,7 +40,7 @@ public class Client {
                     break;
                 } 
                 s=sin.readLine();
-                System.out.print("Server : "+s+"\n");
+                System.out.print("Server : "+s+"\n"); //program sebagai respon dari client
             }
         
             sk.close();
